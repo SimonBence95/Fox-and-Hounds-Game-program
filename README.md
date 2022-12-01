@@ -1,2 +1,5 @@
-# assignment2
-fox and hounds assignment 2
+# Assignment2
+
+Fox And Hounds
+
+Simon Bence (HCX6M1)
