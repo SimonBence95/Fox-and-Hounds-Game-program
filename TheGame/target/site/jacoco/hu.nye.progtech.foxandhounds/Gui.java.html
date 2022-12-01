@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Gui.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">TheGame</a> &gt; <a href="index.source.html" class="el_package">hu.nye.progtech.foxandhounds</a> &gt; <span class="el_source">Gui.java</span></div><h1>Gui.java</h1><pre class="source lang-java linenums">package hu.nye.progtech.foxandhounds;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GridLayout;
+import java.sql.SQLException;
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.SwingConstants;
+import javax.swing.border.TitledBorder;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+/**
+ * Graphical User Interface for fox and hounds program.
+ */
+@Configuration
+public class Gui extends JFrame {
+
+   private JFrame jFrame;
+   public static JButton[][] jButtons;
+   private JMenuBar jMenuBar;
+   private JMenu jMenu;
+   private JMenuItem jMRules;
+   private JMenuItem jMExit;
+   private JMenuItem jMHighScores;
+   private JMenuItem jMSave;
+   private JMenuItem jMLoad;
+   private JButton jBReset;
+   private JLabel jLFox;
+   private JLabel jLHounds;
+   static JPanel jPGrid;
+<span class="fc" id="L46">   private static int figure = 1;</span>
+<span class="fc" id="L47">   private static int[][] gameBoard = new int[8][8];</span>
+<span class="fc" id="L48">   private static int fHound = 1;</span>
+<span class="fc" id="L49">   private static int fFox = 2;</span>
+   public static JRadioButton figure1, figure2;
+
+   String f1;
+   String f2;
+
+   @Autowired
+<span class="fc" id="L56">   public Gui() {</span>
+
+<span class="fc" id="L58">      setSize(600, 600);</span>
+<span class="fc" id="L59">      setLocation(350, 100);</span>
+
+<span class="fc" id="L61">      JFrame jFrame = new JFrame(&quot;Fox And Hounds&quot;);</span>
+<span class="fc" id="L62">      JFrame jFDescription = new JFrame();</span>
+
+<span class="fc" id="L64">      jMRules = new JMenuItem(&quot;Game-Description&quot;);</span>
+<span class="fc" id="L65">      jMHighScores = new JMenuItem(&quot;High-Scores&quot;);</span>
+<span class="fc" id="L66">      jMSave = new JMenuItem(&quot;Save-Game&quot;);</span>
+<span class="fc" id="L67">      jMLoad = new JMenuItem(&quot;Load-Game&quot;);</span>
+<span class="fc" id="L68">      jMExit = new JMenuItem(&quot;Exit-Game&quot;);</span>
+
+
+<span class="fc" id="L71">      Settings jMSettings = new Settings(jMRules, jMHighScores, jMSave, jMLoad, jMExit, jBReset);</span>
+<span class="fc" id="L72">      jMRules.addActionListener(jMSettings);</span>
+<span class="fc" id="L73">      jMHighScores.addActionListener(jMSettings);</span>
+<span class="fc" id="L74">      jMSave.addActionListener(jMSettings);</span>
+<span class="fc" id="L75">      jMLoad.addActionListener(jMSettings);</span>
+<span class="fc" id="L76">      jMExit.addActionListener(jMSettings);</span>
+
+<span class="fc" id="L78">      JMenu jMenu_Exit = new JMenu(&quot;Exit&quot;);</span>
+<span class="fc" id="L79">      jMenu_Exit.add(jMExit);</span>
+
+<span class="fc" id="L81">      JMenu jMenu = new JMenu(&quot;Options&quot;);</span>
+<span class="fc" id="L82">      jMenu.add(jMHighScores);</span>
+<span class="fc" id="L83">      jMenu.add(jMSave);</span>
+<span class="fc" id="L84">      jMenu.add(jMLoad);</span>
+
+<span class="fc" id="L86">      JMenu jMenu2 = new JMenu(&quot;Information&quot;);</span>
+<span class="fc" id="L87">      jMenu2.add(jMRules);</span>
+
+<span class="fc" id="L89">      JMenuBar jMenuBar = new JMenuBar();</span>
+<span class="fc" id="L90">      jMenuBar.add(jMenu_Exit);</span>
+<span class="fc" id="L91">      jMenuBar.add(jMenu);</span>
+<span class="fc" id="L92">      jMenuBar.add(jMenu2);</span>
+<span class="fc" id="L93">      setJMenuBar(jMenuBar);</span>
+
+<span class="fc" id="L95">      JPanel jPController = new JPanel();</span>
+<span class="fc" id="L96">      JPanel jPFigure1 = new JPanel();</span>
+<span class="fc" id="L97">      jPController.setBackground(Color.white);</span>
+
+<span class="fc" id="L99">      figure1 = new JRadioButton(&quot;HOUNDS&quot;, true);</span>
+<span class="fc" id="L100">      ImageIcon iHoundIMG = new ImageIcon(&quot;C:\\Users\\HOME BENCE\\Desktop\\hu_nye_progtech\\TheGame\\src\\main\\resources\\hound.png&quot;);</span>
+<span class="fc" id="L101">      JLabel jLHound = new JLabel(iHoundIMG);</span>
+<span class="fc" id="L102">      JLabel jLFigure1 = new JLabel(&quot;Figure 1&quot;);</span>
+<span class="fc" id="L103">      jPFigure1.add(jLHound);</span>
+<span class="fc" id="L104">      jPFigure1.add(figure1);</span>
+
+<span class="fc" id="L106">      jPFigure1.setLayout(new BorderLayout());</span>
+<span class="fc" id="L107">      jPFigure1.add(jLHound, BorderLayout.WEST);</span>
+<span class="fc" id="L108">      jPFigure1.add(figure1, BorderLayout.EAST);</span>
+<span class="fc" id="L109">      jPFigure1.add(jLFigure1, BorderLayout.SOUTH);</span>
+<span class="fc" id="L110">      jPFigure1.setBorder(BorderFactory.createLineBorder(Color.black));</span>
+
+<span class="fc" id="L112">      JPanel jPFigure2 = new JPanel();</span>
+<span class="fc" id="L113">      figure2 = new JRadioButton(&quot;FOX&quot;, false);</span>
+<span class="fc" id="L114">      ImageIcon iFoxIMG = new ImageIcon(&quot;C:\\Users\\HOME BENCE\\Desktop\\hu_nye_progtech\\TheGame\\src\\main\\resources\\fox.png&quot;);</span>
+<span class="fc" id="L115">      JLabel foxLabel = new JLabel(iFoxIMG);</span>
+<span class="fc" id="L116">      JLabel foxplayer = new JLabel(&quot;Figure 2&quot;);</span>
+<span class="fc" id="L117">      jPFigure2.add(foxLabel);</span>
+<span class="fc" id="L118">      jPFigure2.add(figure2);</span>
+
+<span class="fc" id="L120">      jPFigure2.setLayout(new BorderLayout());</span>
+<span class="fc" id="L121">      jPFigure2.add(foxLabel, BorderLayout.WEST);</span>
+<span class="fc" id="L122">      jPFigure2.add(figure2, BorderLayout.EAST);</span>
+<span class="fc" id="L123">      jPFigure2.add(foxplayer, BorderLayout.SOUTH);</span>
+<span class="fc" id="L124">      jPFigure2.setBorder(BorderFactory.createLineBorder(Color.darkGray));</span>
+
+<span class="fc" id="L126">      JButton jBReset = new JButton(&quot;Reset-Game&quot;);</span>
+<span class="fc" id="L127">      jBReset.setBorder(BorderFactory.createRaisedBevelBorder());</span>
+<span class="fc" id="L128">      JPanel jPResetButton = new JPanel();</span>
+<span class="fc" id="L129">      jPResetButton.add(jBReset);</span>
+<span class="fc" id="L130">      jBReset.addActionListener(jMSettings);</span>
+
+<span class="fc" id="L132">      jPController.setLayout(new BoxLayout(jPController, BoxLayout.Y_AXIS));</span>
+<span class="fc" id="L133">      jPController.add(jPResetButton);</span>
+<span class="fc" id="L134">      jPController.add(jPFigure1);</span>
+<span class="fc" id="L135">      jPController.add(jPFigure2);</span>
+
+
+<span class="fc" id="L138">      jPController.setSize(new Dimension(100, 400));</span>
+
+<span class="fc" id="L140">      TitledBorder titledBorder = BorderFactory.createTitledBorder(&quot;FXNHS&quot;);</span>
+<span class="fc" id="L141">      titledBorder.setTitleJustification(TitledBorder.DEFAULT_JUSTIFICATION);</span>
+<span class="fc" id="L142">      titledBorder.setTitleColor(Color.BLACK);</span>
+<span class="fc" id="L143">      jPController.setBorder(titledBorder);</span>
+
+<span class="fc" id="L145">      add(jPController, BorderLayout.WEST);</span>
+
+      try {
+<span class="fc" id="L148">         gridCreator();</span>
+<span class="nc" id="L149">      } catch (SQLException e) {</span>
+<span class="nc" id="L150">         throw new RuntimeException(e);</span>
+<span class="fc" id="L151">      }</span>
+
+<span class="fc" id="L153">      setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);</span>
+<span class="fc" id="L154">      setVisible(true);</span>
+
+<span class="fc" id="L156">      f1 = JOptionPane.showInputDialog(&quot;Enter hound figures name:&quot;);</span>
+<span class="fc" id="L157">      jLFigure1.setText(f1);</span>
+<span class="fc" id="L158">      jLFigure1.setBounds(100, 150,  125, 40);</span>
+<span class="fc" id="L159">      jLFigure1.setHorizontalAlignment(SwingConstants.CENTER);</span>
+
+<span class="fc" id="L161">      f2 = JOptionPane.showInputDialog(&quot;Enter fox figures name: &quot;);</span>
+<span class="fc" id="L162">      foxplayer.setText(f2);</span>
+<span class="fc" id="L163">      foxplayer.setBounds(100, 100,  125, 40);</span>
+<span class="fc" id="L164">      foxplayer.setHorizontalAlignment(SwingConstants.CENTER);</span>
+
+<span class="fc" id="L166">   }</span>
+
+   /**
+    * Generate Grid for Game Board.
+    *
+    */
+   @Bean
+   public void gridCreator() throws SQLException {
+
+<span class="fc" id="L175">      jPGrid = new JPanel(new GridLayout(8, 8));</span>
+
+<span class="fc" id="L177">      jButtons = new JButton[8][8];</span>
+<span class="fc" id="L178">      TitledBorder titledBorder = BorderFactory.createTitledBorder(&quot;Game-Field&quot;);</span>
+<span class="fc" id="L179">      titledBorder.setTitleJustification(TitledBorder.CENTER);</span>
+
+<span class="fc" id="L181">      titledBorder.setTitleColor(Color.BLACK);</span>
+<span class="fc" id="L182">      jPGrid.setBorder(titledBorder);</span>
+<span class="fc" id="L183">      add(jPGrid, BorderLayout.CENTER);</span>
+
+<span class="fc bfc" id="L185" title="All 2 branches covered.">      for (int i = 0; i &lt; 8; i++) {</span>
+<span class="fc" id="L186">         int k = i;</span>
+<span class="fc bfc" id="L187" title="All 2 branches covered.">         for (int j = 0; j &lt; 8; j++) {</span>
+<span class="fc" id="L188">            jButtons[i][j] = new JButton();</span>
+<span class="fc" id="L189">            jButtons[i][j].setBorderPainted(false);</span>
+<span class="fc" id="L190">            jButtons[i][j].setOpaque(true);</span>
+<span class="fc" id="L191">            gameBoard[i][j] = 0;</span>
+<span class="fc" id="L192">            k++;</span>
+<span class="fc bfc" id="L193" title="All 2 branches covered.">            if (k % 2 == 0) {</span>
+<span class="fc" id="L194">               jButtons[i][j].setBackground(Color.WHITE);</span>
+            } else {
+<span class="fc" id="L196">               jButtons[i][j].setBackground(Color.BLACK);</span>
+            }
+
+<span class="fc" id="L199">            jButtons[i][j].addActionListener(new Main(i, j, figure));</span>
+<span class="fc" id="L200">            jPGrid.add(jButtons[i][j]);</span>
+         }
+      }
+<span class="fc" id="L203">      imgPlacer();</span>
+<span class="fc" id="L204">   }</span>
+
+
+   @Bean
+   public void boardReseter() throws SQLException {
+<span class="fc" id="L209">      gridCreator();</span>
+<span class="fc" id="L210">   }</span>
+
+   /**
+    * Draw the game-board without figures using Gui.
+    */
+   public static void boardStarter() {
+<span class="nc bnc" id="L216" title="All 2 branches missed.">      for (int i = 0; i &lt; 8; i++) {</span>
+<span class="nc bnc" id="L217" title="All 2 branches missed.">         for (int j = 0; j &lt; 8; j++) {</span>
+<span class="nc" id="L218">            gameBoard[i][j] = 0;</span>
+<span class="nc" id="L219">            jButtons[i][j].setIcon(null);</span>
+         }
+      }
+<span class="nc" id="L222">   }</span>
+   /**
+    * Place the starter icons on game board with the img of fox and hounds.
+    */
+
+   @Bean
+   public static void imgPlacer() {
+<span class="fc" id="L229">      jButtons[0][1].setIcon(new ImageIcon(&quot;C:\\Users\\HOME BENCE\\Desktop\\hu_nye_progtech\\TheGame\\src\\main\\resources\\hound.png&quot;));</span>
+<span class="fc" id="L230">      jButtons[0][3].setIcon(new ImageIcon(&quot;C:\\Users\\HOME BENCE\\Desktop\\hu_nye_progtech\\TheGame\\src\\main\\resources\\hound.png&quot;));</span>
+<span class="fc" id="L231">      jButtons[0][5].setIcon(new ImageIcon(&quot;C:\\Users\\HOME BENCE\\Desktop\\hu_nye_progtech\\TheGame\\src\\main\\resources\\hound.png&quot;));</span>
+<span class="fc" id="L232">      jButtons[0][7].setIcon(new ImageIcon(&quot;C:\\Users\\HOME BENCE\\Desktop\\hu_nye_progtech\\TheGame\\src\\main\\resources\\hound.png&quot;));</span>
+
+<span class="fc" id="L234">      jButtons[7][4].setIcon(new ImageIcon(&quot;C:\\Users\\HOME BENCE\\Desktop\\hu_nye_progtech\\TheGame\\src\\main\\resources\\fox.png&quot;));</span>
+
+<span class="fc" id="L236">      gameBoard[0][1] = fFox;</span>
+<span class="fc" id="L237">      gameBoard[0][3] = fFox;</span>
+<span class="fc" id="L238">      gameBoard[0][5] = fFox;</span>
+<span class="fc" id="L239">      gameBoard[0][7] = fFox;</span>
+<span class="fc" id="L240">      gameBoard[7][4] = fHound;</span>
+<span class="fc" id="L241">      figure = 1;</span>
+<span class="fc" id="L242">   }</span>
+   /**
+    * Validate User object.
+    *
+    * @param i Current position of X axis.
+    * @param j Current position of Y axis.
+    * @param figureSelected Currently selected player.
+    * @return Return point.
+    */
+
+   @Bean
+   public static boolean userValidator(int i, int j, int figureSelected) {
+
+<span class="nc" id="L255">      figure = figureSelected;</span>
+<span class="nc" id="L256">      boolean isPlayersTurn = false;</span>
+
+<span class="nc bnc" id="L258" title="All 3 branches missed.">      switch (figure) {</span>
+         case 1:
+<span class="nc bnc" id="L260" title="All 2 branches missed.">            if (gameBoard[i][j] == fHound) {</span>
+<span class="nc" id="L261">               isPlayersTurn = true;</span>
+            }
+            break;
+         case 2:
+<span class="nc bnc" id="L265" title="All 2 branches missed.">            if (gameBoard[i][j] == fFox) {</span>
+<span class="nc" id="L266">               isPlayersTurn = true;</span>
+            }
+            break;
+      }
+<span class="nc" id="L270">      return isPlayersTurn;</span>
+   }
+   /**
+    * Method to help switching player.
+    *
+    * @param currentFigure user object.
+    *
+    * @return return point.
+    */
+
+   @Bean
+   public static int playerChanger(int currentFigure) {
+<span class="nc" id="L282">      figure = currentFigure;</span>
+
+<span class="nc bnc" id="L284" title="All 2 branches missed.">      if (figure == 1) {</span>
+<span class="nc" id="L285">         figure = 2;</span>
+      } else {
+<span class="nc" id="L287">         figure = 1;</span>
+      }
+<span class="nc" id="L289">      return figure;</span>
+   }
+   /**
+    * Method to check movements before executed for validate movements.
+    *
+    * @param currentI Current position of X axis.
+    *
+    * @param currentJ Current position of Y axis.
+    *
+    * @param nextI Move player On X axis.
+    *
+    * @param nextJ Move Player On Y axis.
+    *
+    * @param sFigure Move selected figure.
+    *
+    * @return return point.
+    */
+
+   @Bean
+   public static boolean moveValidator(int currentI, int currentJ, int nextI, int nextJ, int sFigure) {
+<span class="nc" id="L309">      int iFrom = currentI;</span>
+<span class="nc" id="L310">      int jFrom = currentJ;</span>
+<span class="nc" id="L311">      int iTo = nextI;</span>
+<span class="nc" id="L312">      int jTo = nextJ;</span>
+<span class="nc" id="L313">      figure = sFigure;</span>
+
+<span class="nc" id="L315">      boolean isMoveValid = false;</span>
+
+<span class="nc bnc" id="L317" title="All 3 branches missed.">      switch (figure) {</span>
+         case 1:
+<span class="nc bnc" id="L319" title="All 2 branches missed.">            if (gameBoard[iFrom][jFrom] == fHound) {</span>
+<span class="nc bnc" id="L320" title="All 2 branches missed.">               if (gameBoard[iTo][jTo] != fHound) {</span>
+<span class="nc" id="L321">                  isMoveValid = true;</span>
+               }
+            }
+            break;
+         case 2:
+<span class="nc bnc" id="L326" title="All 2 branches missed.">            if (gameBoard[iFrom][jFrom] == fFox) {</span>
+<span class="nc bnc" id="L327" title="All 2 branches missed.">               if (gameBoard[iTo][jTo] != fFox) {</span>
+<span class="nc" id="L328">                  isMoveValid = true;</span>
+               }
+            }
+            break;
+      }
+<span class="nc" id="L333">      return isMoveValid;</span>
+   }
+
+   /**
+    * Selected position if players can move on X and Y axis.
+    */
+
+   @Bean
+   public static boolean positionChanger(int currentI, int currentJ, int nextI, int nextJ, int sFigure) {
+<span class="nc" id="L342">      boolean isMoveValid = false;</span>
+<span class="nc" id="L343">      int iFrom = currentI;</span>
+<span class="nc" id="L344">      int jFrom = currentJ;</span>
+<span class="nc" id="L345">      int iTo = nextI;</span>
+<span class="nc" id="L346">      int jTo = nextJ;</span>
+<span class="nc" id="L347">      figure = sFigure;</span>
+
+<span class="nc bnc" id="L349" title="All 3 branches missed.">      switch (figure) {</span>
+         case 1:
+<span class="nc bnc" id="L351" title="All 4 branches missed.">            if ((iFrom != iTo) &amp;&amp; (jFrom != jTo)) {</span>
+<span class="nc bnc" id="L352" title="All 4 branches missed.">               if (((iFrom + 1) == iTo) || ((iFrom - 1) == iTo)) {</span>
+<span class="nc bnc" id="L353" title="All 4 branches missed.">                  if ((jFrom == (jTo + 1)) || (jFrom == (jTo - 1))) {</span>
+<span class="nc bnc" id="L354" title="All 2 branches missed.">                     if (gameBoard[iTo][jTo] == 0) {</span>
+<span class="nc" id="L355">                        gameBoard[iTo][jTo] = fHound;</span>
+<span class="nc" id="L356">                        gameBoard[iFrom][jFrom] = 0;</span>
+<span class="nc" id="L357">                        jButtons[iFrom][jFrom].setIcon(null);</span>
+<span class="nc" id="L358">                        jButtons[iTo][jTo].setIcon(new ImageIcon(</span>
+                                &quot;C:\\Users\\HOME BENCE\\Desktop\\hu_nye_progtech\\TheGame\\src\\main\\resources\\fox.png&quot;
+                        ));
+<span class="nc" id="L361">                        isMoveValid = true;</span>
+                     }
+                  }
+               }
+            }
+            break;
+         case 2:
+<span class="nc bnc" id="L368" title="All 4 branches missed.">            if ((iFrom != iTo) &amp;&amp; (jFrom != jTo)) {</span>
+<span class="nc bnc" id="L369" title="All 2 branches missed.">               if ((iFrom + 1) == iTo) {</span>
+<span class="nc bnc" id="L370" title="All 4 branches missed.">                  if (((jFrom + 1) == jTo) || ((jFrom - 1) == jTo)) {</span>
+<span class="nc bnc" id="L371" title="All 2 branches missed.">                     if (gameBoard[iTo][jTo] == 0) {</span>
+<span class="nc" id="L372">                        gameBoard[iTo][jTo] = fFox;</span>
+<span class="nc" id="L373">                        gameBoard[iFrom][jFrom] = 0;</span>
+<span class="nc" id="L374">                        jButtons[iFrom][jFrom].setIcon(null);</span>
+<span class="nc" id="L375">                        jButtons[iTo][jTo].setIcon(new ImageIcon(</span>
+                                &quot;C:\\Users\\HOME BENCE\\Desktop\\workbench\\beadando\\src\\main\\resources\\hound.png&quot;
+                        ));
+<span class="nc" id="L378">                        isMoveValid = true;</span>
+                     }
+                  }
+               }
+            }
+            break;
+      }
+<span class="nc" id="L385">      return isMoveValid;</span>
+   }
+
+   /**
+    * Check positions if fox or hounds has won the game yet.
+    *
+    * @param currentI currentI Move player On X axis.
+    *
+    * @param currentJ Move Player On Y axis.
+    *
+    * @param _user Move selected player.
+    *
+    * @return return point.
+    */
+   @Bean
+   public static boolean winValidator(int currentI, int currentJ, int _user) {
+<span class="nc" id="L401">      boolean isGameFinished = false;</span>
+<span class="nc" id="L402">      int iFrom = currentI;</span>
+<span class="nc" id="L403">      int jFrom = currentJ;</span>
+<span class="nc" id="L404">      int i = 0;</span>
+<span class="nc" id="L405">      int j = 0;</span>
+<span class="nc" id="L406">      figure = _user;</span>
+
+<span class="nc bnc" id="L408" title="All 3 branches missed.">      switch (figure) {</span>
+         case 1:
+<span class="nc bnc" id="L410" title="All 2 branches missed.">            if (iFrom == 0) {</span>
+<span class="nc" id="L411">               isGameFinished = true;</span>
+            }
+            break;
+         case 2:
+
+<span class="nc bnc" id="L416" title="All 2 branches missed.">            for (int x = 0; x &lt; 8; x++) {</span>
+<span class="nc bnc" id="L417" title="All 2 branches missed.">               for (int y = 0; y &lt; 8; y++) {</span>
+<span class="nc bnc" id="L418" title="All 2 branches missed.">                  if (gameBoard[x][y] == 1) {</span>
+<span class="nc" id="L419">                     i = x;</span>
+<span class="nc" id="L420">                     j = y;</span>
+                  }
+               }
+            }
+<span class="nc bnc" id="L424" title="All 2 branches missed.">            if (j == 0) {</span>
+<span class="nc bnc" id="L425" title="All 4 branches missed.">               if ((gameBoard[i - 1][j + 1] == fFox) &amp;&amp; (gameBoard[i + 1][j + 1] == fFox)) {</span>
+<span class="nc" id="L426">                  isGameFinished = true;</span>
+               }
+<span class="nc bnc" id="L428" title="All 2 branches missed.">            } else if (j == 7) {</span>
+<span class="nc bnc" id="L429" title="All 4 branches missed.">               if ((gameBoard[i + 1][j - 1] == fFox) &amp;&amp; (gameBoard[i - 1][j - 1] == fFox)) {</span>
+<span class="nc" id="L430">                  isGameFinished = true;</span>
+               }
+            } else {
+<span class="nc bnc" id="L433" title="All 4 branches missed.">               if ((gameBoard[i + 1][j + 1] == fFox) &amp;&amp; (gameBoard[i - 1][j + 1] == fFox)) {</span>
+<span class="nc bnc" id="L434" title="All 4 branches missed.">                  if ((gameBoard[i - 1][j - 1] == fFox) &amp;&amp; (gameBoard[i + 1][j - 1] == fFox)) {</span>
+<span class="nc" id="L435">                     isGameFinished = true;</span>
+                  }
+               }
+            }
+            break;
+      }
+
+<span class="nc" id="L442">      return isGameFinished;</span>
+   }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>
