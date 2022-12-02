@@ -2,11 +2,7 @@ package hu.nye.progtech.foxandhounds;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 
@@ -14,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
 
 
 /**
@@ -148,40 +143,102 @@ public class Main implements ActionListener {
     @Bean
     public static void main(String[] args) throws SQLException {
 
-        System.out.println("Chose Command to execute ([start]/[highscore])");
+        System.out.println("Chose Command to execute ([start]/[highscore]/[deleteuser]/[userpoints])");
 
         Scanner scanner = new Scanner(System.in);
 
         String option = scanner.nextLine();
 
 
-            switch (option) {
-                case "start":
-                    new Gui();
-                    AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext();
-                    annotationConfigApplicationContext.scan(
-                            "C:\\Users\\HOME BENCE\\Desktop\\hu_nye_progtech\\TheGame\\src\\main\\java\\hu\\nye\\progtech\\" +
-                                    "foxandhounds\\Gui.java"
-                    );
-                    break;
-                case "highscore":
-                    Connection connection = DriverManager.getConnection("jdbc:h2:tcp://localhost/./highScores", "sa", "password");
+        switch (option) {
+            case "start":
+                new Gui();
+                AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext();
+                annotationConfigApplicationContext.scan(
+                        "C:\\Users\\HOME BENCE\\Desktop\\hu_nye_progtech\\TheGame\\src\\main\\java\\hu\\nye\\progtech\\" +
+                                "foxandhounds\\Gui.java"
+                );
+                break;
+            case "highscore":
+                Connection connection = DriverManager.getConnection("jdbc:h2:tcp://localhost/./highScores", "sa", "password");
 
-                    Statement statement = connection.createStatement();
+                Statement statement = connection.createStatement();
 
-                    ResultSet resultSet = statement.executeQuery("SELECT * FROM HIGHSCORES ");
+                ResultSet resultSet = statement.executeQuery("SELECT * FROM HIGHSCORES ");
 
-                    while (resultSet.next()) {
-                        int id = resultSet.getInt("ID");
-                        String name = resultSet.getString("NAME");
-                        int point = resultSet.getInt("POINT");
+                while (resultSet.next()) {
+                    int id = resultSet.getInt("ID");
+                    String name = resultSet.getString("NAME");
+                    int point = resultSet.getInt("POINT");
 
-                        HighScores highScores = new HighScores(id, name, point);
-                        System.out.println(highScores);
-                    }
-                    break;
-                default:
-                    System.out.println("incorrect command");
+                    HighScores highScores = new HighScores(id, name, point);
+                    System.out.println(highScores);
+                }
+                resultSet.close();
+                statement.close();
+                connection.close();
+                break;
+            case "deleteuser":
+                //  TODO : ID MUST BE EDITABLE
+
+                /*
+                Connection connection2 = DriverManager.getConnection("jdbc:h2:tcp://localhost/./highScores", "sa", "password");
+                Statement statement2 = connection2.createStatement();
+                int i = statement2.executeUpdate("DELETE FROM HIGHSCORES WHERE ID = 1");
+                System.out.println("Affected rows " + i);
+
+                statement2.close();
+                connection2.close();
+
+                 */
+
+                System.out.println("Please write in ID of row you want to delete from database:([ID])");
+                Connection connection2 = DriverManager.getConnection("jdbc:h2:tcp://localhost/./highScores", "sa", "password");
+
+                int id = scanner.nextInt();
+
+                String deleteQuery = "DELETE FROM HIGHSCORES WHERE ID = ?";
+                PreparedStatement preparedStatement = connection2.prepareStatement(deleteQuery);
+                preparedStatement.setInt(1,id);
+
+                int i = preparedStatement.executeUpdate();
+                System.out.println(i);
+
+                preparedStatement.close();
+                connection2.close();
+                break;
+
+            case "userpoints":
+                // TODO : BUILD THIS IN GAMEPLAY PROJECT
+
+                System.out.println("Please write in name and point you want to store in the database:([name]),([point])");
+
+                Connection connection3 = DriverManager.getConnection("jdbc:h2:tcp://localhost/./highScores", "sa", "password");
+
+                String name = scanner.nextLine();
+                int point = scanner.nextInt();
+
+                // String insertQuery = "INSERT INTO HIGHSCORES (NAME, POINT) VALUES ('Teszt User', 32)";
+                /*String insertQuery = "INSERT INTO HIGHSCORES (NAME, POINT) VALUES ('" + name + "'," + point + ")";
+                statement = connection3.createStatement();
+                int i1 = statement.executeUpdate(insertQuery);
+                System.out.println(i1);
+                 */
+
+                String insertQuery = "INSERT INTO HIGHSCORES (NAME, POINT) VALUES (?, ?)";
+                PreparedStatement preparedStatement2 = connection3.prepareStatement(insertQuery);
+                preparedStatement2.setString(1,name);
+                preparedStatement2.setInt(2,point);
+
+                int i1 = preparedStatement2.executeUpdate();
+                System.out.println(i1);
+
+                preparedStatement2.close();
+                connection3.close();
+                break;
+
+            default:
+                System.out.println("incorrect command");
 
         }
 

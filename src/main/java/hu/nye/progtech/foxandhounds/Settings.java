@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * Class to manage GUI actions.
- * */
+ */
 
 @Configuration
 public class Settings implements ActionListener {
@@ -29,7 +29,6 @@ public class Settings implements ActionListener {
     private JMenuItem jMExit;
     @Autowired
     private JButton rjMReset;
-
 
 
     @Autowired

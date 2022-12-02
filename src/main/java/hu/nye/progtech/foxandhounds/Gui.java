@@ -179,19 +179,18 @@ public class Gui extends JFrame {
 
         f1 = JOptionPane.showInputDialog("Enter hound figures name:");
         jLFigure1.setText(f1);
-        jLFigure1.setBounds(100, 150,  125, 40);
+        jLFigure1.setBounds(100, 150, 125, 40);
         jLFigure1.setHorizontalAlignment(SwingConstants.CENTER);
 
         f2 = JOptionPane.showInputDialog("Enter fox figures name: ");
         foxplayer.setText(f2);
-        foxplayer.setBounds(100, 100,  125, 40);
+        foxplayer.setBounds(100, 100, 125, 40);
         foxplayer.setHorizontalAlignment(SwingConstants.CENTER);
 
     }
 
     /**
      * Generate Grid for Game Board.
-     *
      */
     @Bean
     public void gridCreator() throws SQLException {
@@ -245,6 +244,7 @@ public class Gui extends JFrame {
             }
         }
     }
+
     /**
      * Place the starter icons on game board with the img of fox and hounds.
      */
@@ -275,11 +275,12 @@ public class Gui extends JFrame {
         gameBoard[7][4] = fHound;
         figure = 1;
     }
+
     /**
      * Validate User object.
      *
-     * @param i Current position of X axis.
-     * @param j Current position of Y axis.
+     * @param i              Current position of X axis.
+     * @param j              Current position of Y axis.
      * @param figureSelected Currently selected player.
      * @return Return point.
      */
@@ -304,11 +305,11 @@ public class Gui extends JFrame {
         }
         return isPlayersTurn;
     }
+
     /**
      * Method to help switching player.
      *
      * @param currentFigure user object.
-     *
      * @return return point.
      */
 
@@ -323,19 +324,15 @@ public class Gui extends JFrame {
         }
         return figure;
     }
+
     /**
      * Method to check movements before executed for validate movements.
      *
      * @param currentI Current position of X axis.
-     *
      * @param currentJ Current position of Y axis.
-     *
-     * @param nextI Move player On X axis.
-     *
-     * @param nextJ Move Player On Y axis.
-     *
-     * @param sFigure Move selected figure.
-     *
+     * @param nextI    Move player On X axis.
+     * @param nextJ    Move Player On Y axis.
+     * @param sFigure  Move selected figure.
      * @return return point.
      */
 
@@ -424,11 +421,8 @@ public class Gui extends JFrame {
      * Check positions if fox or hounds has won the game yet.
      *
      * @param currentI currentI Move player On X axis.
-     *
      * @param currentJ Move Player On Y axis.
-     *
-     * @param _user Move selected player.
-     *
+     * @param _user    Move selected player.
      * @return return point.
      */
     @Bean
