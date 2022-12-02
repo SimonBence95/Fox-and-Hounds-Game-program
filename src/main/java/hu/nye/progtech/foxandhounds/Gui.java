@@ -161,7 +161,7 @@ public class Gui extends JFrame {
 
         jPController.setSize(new Dimension(100, 400));
 
-        TitledBorder titledBorder = BorderFactory.createTitledBorder("[Fox And Hounds]");
+        TitledBorder titledBorder = BorderFactory.createTitledBorder("[ Fox And Hounds ]");
         titledBorder.setTitleJustification(TitledBorder.DEFAULT_JUSTIFICATION);
         titledBorder.setTitleColor(Color.BLACK);
         jPController.setBorder(titledBorder);
