@@ -118,7 +118,7 @@ public class Gui extends JFrame {
 
         figure1 = new JRadioButton("HOUNDS", true);
         ImageIcon iHoundIMG = new ImageIcon(
-                "C:\\Users\\HOME BENCE\\Desktop\\assignment2\\src\\main\\resources\\img\\hound.png"
+                "C:\\Users\\HOME BENCE\\Desktop\\assignment\\foxAndHounds\\src\\main\\resources\\img\\hound.png"
         );
         JLabel jLHound = new JLabel(iHoundIMG);
         JLabel jLFigure1 = new JLabel("Figure 1");
@@ -134,7 +134,7 @@ public class Gui extends JFrame {
         JPanel jPFigure2 = new JPanel();
         figure2 = new JRadioButton("FOX", false);
         ImageIcon iFoxIMG = new ImageIcon(
-                "C:\\Users\\HOME BENCE\\Desktop\\assignment2\\src\\main\\resources\\img\\fox.png"
+                "C:\\Users\\HOME BENCE\\Desktop\\assignment\\foxAndHounds\\src\\main\\resources\\img\\fox.png"
         );
         JLabel foxLabel = new JLabel(iFoxIMG);
         JLabel foxplayer = new JLabel("Figure 2");
@@ -161,7 +161,7 @@ public class Gui extends JFrame {
 
         jPController.setSize(new Dimension(100, 400));
 
-        TitledBorder titledBorder = BorderFactory.createTitledBorder("FXNHS");
+        TitledBorder titledBorder = BorderFactory.createTitledBorder("[Fox And Hounds]");
         titledBorder.setTitleJustification(TitledBorder.DEFAULT_JUSTIFICATION);
         titledBorder.setTitleColor(Color.BLACK);
         jPController.setBorder(titledBorder);
@@ -252,20 +252,20 @@ public class Gui extends JFrame {
     @Bean
     public static void imgPlacer() {
         jButtons[0][1].setIcon(new ImageIcon(
-                "C:\\Users\\HOME BENCE\\Desktop\\assignment2\\src\\main\\resources\\img\\hound.png"
+                "C:\\Users\\HOME BENCE\\Desktop\\assignment\\foxAndHounds\\src\\main\\resources\\img\\hound.png"
         ));
         jButtons[0][3].setIcon(new ImageIcon(
-                "C:\\Users\\HOME BENCE\\Desktop\\assignment2\\src\\main\\resources\\img\\hound.png"
+                "C:\\Users\\HOME BENCE\\Desktop\\assignment\\foxAndHounds\\src\\main\\resources\\img\\hound.png"
         ));
         jButtons[0][5].setIcon(new ImageIcon(
-                "C:\\Users\\HOME BENCE\\Desktop\\assignment2\\src\\main\\resources\\img\\hound.png"
+                "C:\\Users\\HOME BENCE\\Desktop\\assignment\\foxAndHounds\\src\\main\\resources\\img\\hound.png"
         ));
         jButtons[0][7].setIcon(new ImageIcon(
-                "C:\\Users\\HOME BENCE\\Desktop\\assignment2\\src\\main\\resources\\img\\hound.png"
+                "C:\\Users\\HOME BENCE\\Desktop\\assignment\\foxAndHounds\\src\\main\\resources\\img\\hound.png"
         ));
 
         jButtons[7][4].setIcon(new ImageIcon(
-                "C:\\Users\\HOME BENCE\\Desktop\\assignment2\\src\\main\\resources\\img\\fox.png"
+                "C:\\Users\\HOME BENCE\\Desktop\\assignment\\foxAndHounds\\src\\main\\resources\\img\\fox.png"
         ));
 
         gameBoard[0][1] = fFox;
@@ -388,7 +388,7 @@ public class Gui extends JFrame {
                                 gameBoard[iFrom][jFrom] = 0;
                                 jButtons[iFrom][jFrom].setIcon(null);
                                 jButtons[iTo][jTo].setIcon(new ImageIcon(
-                                        "C:\\Users\\HOME BENCE\\Desktop\\assignment2\\src\\main\\resources\\img\\fox.png"
+                                        "C:\\Users\\HOME BENCE\\Desktop\\assignment\\foxAndHounds\\src\\main\\resources\\img\\fox.png"
                                 ));
                                 isMoveValid = true;
                             }
@@ -405,7 +405,7 @@ public class Gui extends JFrame {
                                 gameBoard[iFrom][jFrom] = 0;
                                 jButtons[iFrom][jFrom].setIcon(null);
                                 jButtons[iTo][jTo].setIcon(new ImageIcon(
-                                        "C:\\Users\\HOME BENCE\\Desktop\\assignment2\\src\\main\\resources\\img\\hound.png"
+                                        "C:\\Users\\HOME BENCE\\Desktop\\assignment\\foxAndHounds\\src\\main\\resources\\img\\hound.png"
                                 ));
                                 isMoveValid = true;
                             }

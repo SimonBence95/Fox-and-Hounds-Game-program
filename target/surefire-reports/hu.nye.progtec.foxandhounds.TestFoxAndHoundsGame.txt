@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: hu.nye.progtec.foxandhounds.TestFoxAndHoundsGame
 -------------------------------------------------------------------------------
-Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.534 s - in hu.nye.progtec.foxandhounds.TestFoxAndHoundsGame
+Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.184 s - in hu.nye.progtec.foxandhounds.TestFoxAndHoundsGame

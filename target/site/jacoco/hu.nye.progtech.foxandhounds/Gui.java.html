@@ -118,7 +118,7 @@ public class Gui extends JFrame {
 
 <span class="fc" id="L119">        figure1 = new JRadioButton(&quot;HOUNDS&quot;, true);</span>
 <span class="fc" id="L120">        ImageIcon iHoundIMG = new ImageIcon(</span>
-                &quot;C:\\Users\\HOME BENCE\\Desktop\\assignment2\\src\\main\\resources\\img\\hound.png&quot;
+                &quot;C:\\Users\\HOME BENCE\\Desktop\\assignment\\foxAndHounds\\src\\main\\resources\\img\\hound.png&quot;
         );
 <span class="fc" id="L123">        JLabel jLHound = new JLabel(iHoundIMG);</span>
 <span class="fc" id="L124">        JLabel jLFigure1 = new JLabel(&quot;Figure 1&quot;);</span>
@@ -134,7 +134,7 @@ public class Gui extends JFrame {
 <span class="fc" id="L134">        JPanel jPFigure2 = new JPanel();</span>
 <span class="fc" id="L135">        figure2 = new JRadioButton(&quot;FOX&quot;, false);</span>
 <span class="fc" id="L136">        ImageIcon iFoxIMG = new ImageIcon(</span>
-                &quot;C:\\Users\\HOME BENCE\\Desktop\\assignment2\\src\\main\\resources\\img\\fox.png&quot;
+                &quot;C:\\Users\\HOME BENCE\\Desktop\\assignment\\foxAndHounds\\src\\main\\resources\\img\\fox.png&quot;
         );
 <span class="fc" id="L139">        JLabel foxLabel = new JLabel(iFoxIMG);</span>
 <span class="fc" id="L140">        JLabel foxplayer = new JLabel(&quot;Figure 2&quot;);</span>
@@ -161,7 +161,7 @@ public class Gui extends JFrame {
 
 <span class="fc" id="L162">        jPController.setSize(new Dimension(100, 400));</span>
 
-<span class="fc" id="L164">        TitledBorder titledBorder = BorderFactory.createTitledBorder(&quot;FXNHS&quot;);</span>
+<span class="fc" id="L164">        TitledBorder titledBorder = BorderFactory.createTitledBorder(&quot;[Fox And Hounds]&quot;);</span>
 <span class="fc" id="L165">        titledBorder.setTitleJustification(TitledBorder.DEFAULT_JUSTIFICATION);</span>
 <span class="fc" id="L166">        titledBorder.setTitleColor(Color.BLACK);</span>
 <span class="fc" id="L167">        jPController.setBorder(titledBorder);</span>
@@ -252,20 +252,20 @@ public class Gui extends JFrame {
     @Bean
     public static void imgPlacer() {
 <span class="fc" id="L254">        jButtons[0][1].setIcon(new ImageIcon(</span>
-                &quot;C:\\Users\\HOME BENCE\\Desktop\\assignment2\\src\\main\\resources\\img\\hound.png&quot;
+                &quot;C:\\Users\\HOME BENCE\\Desktop\\assignment\\foxAndHounds\\src\\main\\resources\\img\\hound.png&quot;
         ));
 <span class="fc" id="L257">        jButtons[0][3].setIcon(new ImageIcon(</span>
-                &quot;C:\\Users\\HOME BENCE\\Desktop\\assignment2\\src\\main\\resources\\img\\hound.png&quot;
+                &quot;C:\\Users\\HOME BENCE\\Desktop\\assignment\\foxAndHounds\\src\\main\\resources\\img\\hound.png&quot;
         ));
 <span class="fc" id="L260">        jButtons[0][5].setIcon(new ImageIcon(</span>
-                &quot;C:\\Users\\HOME BENCE\\Desktop\\assignment2\\src\\main\\resources\\img\\hound.png&quot;
+                &quot;C:\\Users\\HOME BENCE\\Desktop\\assignment\\foxAndHounds\\src\\main\\resources\\img\\hound.png&quot;
         ));
 <span class="fc" id="L263">        jButtons[0][7].setIcon(new ImageIcon(</span>
-                &quot;C:\\Users\\HOME BENCE\\Desktop\\assignment2\\src\\main\\resources\\img\\hound.png&quot;
+                &quot;C:\\Users\\HOME BENCE\\Desktop\\assignment\\foxAndHounds\\src\\main\\resources\\img\\hound.png&quot;
         ));
 
 <span class="fc" id="L267">        jButtons[7][4].setIcon(new ImageIcon(</span>
-                &quot;C:\\Users\\HOME BENCE\\Desktop\\assignment2\\src\\main\\resources\\img\\fox.png&quot;
+                &quot;C:\\Users\\HOME BENCE\\Desktop\\assignment\\foxAndHounds\\src\\main\\resources\\img\\fox.png&quot;
         ));
 
 <span class="fc" id="L271">        gameBoard[0][1] = fFox;</span>
@@ -388,7 +388,7 @@ public class Gui extends JFrame {
 <span class="nc" id="L388">                                gameBoard[iFrom][jFrom] = 0;</span>
 <span class="nc" id="L389">                                jButtons[iFrom][jFrom].setIcon(null);</span>
 <span class="nc" id="L390">                                jButtons[iTo][jTo].setIcon(new ImageIcon(</span>
-                                        &quot;C:\\Users\\HOME BENCE\\Desktop\\assignment2\\src\\main\\resources\\img\\fox.png&quot;
+                                        &quot;C:\\Users\\HOME BENCE\\Desktop\\assignment\\foxAndHounds\\src\\main\\resources\\img\\fox.png&quot;
                                 ));
 <span class="nc" id="L393">                                isMoveValid = true;</span>
                             }
@@ -405,7 +405,7 @@ public class Gui extends JFrame {
 <span class="nc" id="L405">                                gameBoard[iFrom][jFrom] = 0;</span>
 <span class="nc" id="L406">                                jButtons[iFrom][jFrom].setIcon(null);</span>
 <span class="nc" id="L407">                                jButtons[iTo][jTo].setIcon(new ImageIcon(</span>
-                                        &quot;C:\\Users\\HOME BENCE\\Desktop\\assignment2\\src\\main\\resources\\img\\hound.png&quot;
+                                        &quot;C:\\Users\\HOME BENCE\\Desktop\\assignment\\foxAndHounds\\src\\main\\resources\\img\\hound.png&quot;
                                 ));
 <span class="nc" id="L410">                                isMoveValid = true;</span>
                             }

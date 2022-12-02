@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: hu.nye.progtec.foxandhounds.SettingsTest
 -------------------------------------------------------------------------------
-Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.076 s - in hu.nye.progtec.foxandhounds.SettingsTest
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.228 s - in hu.nye.progtec.foxandhounds.SettingsTest
