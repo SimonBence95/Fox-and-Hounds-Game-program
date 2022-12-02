@@ -179,72 +179,72 @@ public class Gui extends JFrame {
 
 <span class="fc" id="L180">        f1 = JOptionPane.showInputDialog(&quot;Enter hound figures name:&quot;);</span>
 <span class="fc" id="L181">        jLFigure1.setText(f1);</span>
-<span class="fc" id="L182">        jLFigure1.setBounds(100, 150,  125, 40);</span>
+<span class="fc" id="L182">        jLFigure1.setBounds(100, 150, 125, 40);</span>
 <span class="fc" id="L183">        jLFigure1.setHorizontalAlignment(SwingConstants.CENTER);</span>
 
 <span class="fc" id="L185">        f2 = JOptionPane.showInputDialog(&quot;Enter fox figures name: &quot;);</span>
 <span class="fc" id="L186">        foxplayer.setText(f2);</span>
-<span class="fc" id="L187">        foxplayer.setBounds(100, 100,  125, 40);</span>
+<span class="fc" id="L187">        foxplayer.setBounds(100, 100, 125, 40);</span>
 <span class="fc" id="L188">        foxplayer.setHorizontalAlignment(SwingConstants.CENTER);</span>
 
 <span class="fc" id="L190">    }</span>
 
     /**
      * Generate Grid for Game Board.
-     *
      */
     @Bean
     public void gridCreator() throws SQLException {
 
-<span class="fc" id="L199">        jPGrid = new JPanel(new GridLayout(8, 8));</span>
+<span class="fc" id="L198">        jPGrid = new JPanel(new GridLayout(8, 8));</span>
 
-<span class="fc" id="L201">        jButtons = new JButton[8][8];</span>
-<span class="fc" id="L202">        TitledBorder titledBorder = BorderFactory.createTitledBorder(&quot;Game-Field&quot;);</span>
-<span class="fc" id="L203">        titledBorder.setTitleJustification(TitledBorder.CENTER);</span>
+<span class="fc" id="L200">        jButtons = new JButton[8][8];</span>
+<span class="fc" id="L201">        TitledBorder titledBorder = BorderFactory.createTitledBorder(&quot;Game-Field&quot;);</span>
+<span class="fc" id="L202">        titledBorder.setTitleJustification(TitledBorder.CENTER);</span>
 
-<span class="fc" id="L205">        titledBorder.setTitleColor(Color.BLACK);</span>
-<span class="fc" id="L206">        jPGrid.setBorder(titledBorder);</span>
-<span class="fc" id="L207">        add(jPGrid, BorderLayout.CENTER);</span>
+<span class="fc" id="L204">        titledBorder.setTitleColor(Color.BLACK);</span>
+<span class="fc" id="L205">        jPGrid.setBorder(titledBorder);</span>
+<span class="fc" id="L206">        add(jPGrid, BorderLayout.CENTER);</span>
 
-<span class="fc bfc" id="L209" title="All 2 branches covered.">        for (int i = 0; i &lt; 8; i++) {</span>
-<span class="fc" id="L210">            int k = i;</span>
-<span class="fc bfc" id="L211" title="All 2 branches covered.">            for (int j = 0; j &lt; 8; j++) {</span>
-<span class="fc" id="L212">                jButtons[i][j] = new JButton();</span>
-<span class="fc" id="L213">                jButtons[i][j].setBorderPainted(false);</span>
-<span class="fc" id="L214">                jButtons[i][j].setOpaque(true);</span>
-<span class="fc" id="L215">                gameBoard[i][j] = 0;</span>
-<span class="fc" id="L216">                k++;</span>
-<span class="fc bfc" id="L217" title="All 2 branches covered.">                if (k % 2 == 0) {</span>
-<span class="fc" id="L218">                    jButtons[i][j].setBackground(Color.WHITE);</span>
+<span class="fc bfc" id="L208" title="All 2 branches covered.">        for (int i = 0; i &lt; 8; i++) {</span>
+<span class="fc" id="L209">            int k = i;</span>
+<span class="fc bfc" id="L210" title="All 2 branches covered.">            for (int j = 0; j &lt; 8; j++) {</span>
+<span class="fc" id="L211">                jButtons[i][j] = new JButton();</span>
+<span class="fc" id="L212">                jButtons[i][j].setBorderPainted(false);</span>
+<span class="fc" id="L213">                jButtons[i][j].setOpaque(true);</span>
+<span class="fc" id="L214">                gameBoard[i][j] = 0;</span>
+<span class="fc" id="L215">                k++;</span>
+<span class="fc bfc" id="L216" title="All 2 branches covered.">                if (k % 2 == 0) {</span>
+<span class="fc" id="L217">                    jButtons[i][j].setBackground(Color.WHITE);</span>
                 } else {
-<span class="fc" id="L220">                    jButtons[i][j].setBackground(Color.BLACK);</span>
+<span class="fc" id="L219">                    jButtons[i][j].setBackground(Color.BLACK);</span>
                 }
 
-<span class="fc" id="L223">                jButtons[i][j].addActionListener(new Main(i, j, figure));</span>
-<span class="fc" id="L224">                jPGrid.add(jButtons[i][j]);</span>
+<span class="fc" id="L222">                jButtons[i][j].addActionListener(new Main(i, j, figure));</span>
+<span class="fc" id="L223">                jPGrid.add(jButtons[i][j]);</span>
             }
         }
-<span class="fc" id="L227">        imgPlacer();</span>
-<span class="fc" id="L228">    }</span>
+<span class="fc" id="L226">        imgPlacer();</span>
+<span class="fc" id="L227">    }</span>
 
 
     @Bean
     public void boardReseter() throws SQLException {
-<span class="fc" id="L233">        gridCreator();</span>
-<span class="fc" id="L234">    }</span>
+<span class="fc" id="L232">        gridCreator();</span>
+<span class="fc" id="L233">    }</span>
 
     /**
      * Draw the game-board without figures using Gui.
      */
     @Bean
     public static void boardStarter() {
-<span class="fc bfc" id="L241" title="All 2 branches covered.">        for (int i = 0; i &lt; 8; i++) {</span>
-<span class="fc bfc" id="L242" title="All 2 branches covered.">            for (int j = 0; j &lt; 8; j++) {</span>
-<span class="fc" id="L243">                gameBoard[i][j] = 0;</span>
-<span class="fc" id="L244">                jButtons[i][j].setIcon(null);</span>
+<span class="fc bfc" id="L240" title="All 2 branches covered.">        for (int i = 0; i &lt; 8; i++) {</span>
+<span class="fc bfc" id="L241" title="All 2 branches covered.">            for (int j = 0; j &lt; 8; j++) {</span>
+<span class="fc" id="L242">                gameBoard[i][j] = 0;</span>
+<span class="fc" id="L243">                jButtons[i][j].setIcon(null);</span>
             }
         }
-<span class="fc" id="L247">    }</span>
+<span class="fc" id="L246">    }</span>
+
     /**
      * Place the starter icons on game board with the img of fox and hounds.
      */
@@ -275,11 +275,12 @@ public class Gui extends JFrame {
 <span class="fc" id="L275">        gameBoard[7][4] = fHound;</span>
 <span class="fc" id="L276">        figure = 1;</span>
 <span class="fc" id="L277">    }</span>
+
     /**
      * Validate User object.
      *
-     * @param i Current position of X axis.
-     * @param j Current position of Y axis.
+     * @param i              Current position of X axis.
+     * @param j              Current position of Y axis.
      * @param figureSelected Currently selected player.
      * @return Return point.
      */
@@ -287,85 +288,81 @@ public class Gui extends JFrame {
     @Bean
     public static boolean userValidator(int i, int j, int figureSelected) {
 
-<span class="fc" id="L290">        figure = figureSelected;</span>
-<span class="fc" id="L291">        boolean isPlayersTurn = false;</span>
+<span class="fc" id="L291">        figure = figureSelected;</span>
+<span class="fc" id="L292">        boolean isPlayersTurn = false;</span>
 
-<span class="pc bpc" id="L293" title="2 of 3 branches missed.">        switch (figure) {</span>
+<span class="pc bpc" id="L294" title="2 of 3 branches missed.">        switch (figure) {</span>
             case 1:
-<span class="nc bnc" id="L295" title="All 2 branches missed.">                if (gameBoard[i][j] == fHound) {</span>
-<span class="nc" id="L296">                    isPlayersTurn = true;</span>
+<span class="nc bnc" id="L296" title="All 2 branches missed.">                if (gameBoard[i][j] == fHound) {</span>
+<span class="nc" id="L297">                    isPlayersTurn = true;</span>
                 }
                 break;
             case 2:
-<span class="nc bnc" id="L300" title="All 2 branches missed.">                if (gameBoard[i][j] == fFox) {</span>
-<span class="nc" id="L301">                    isPlayersTurn = true;</span>
+<span class="nc bnc" id="L301" title="All 2 branches missed.">                if (gameBoard[i][j] == fFox) {</span>
+<span class="nc" id="L302">                    isPlayersTurn = true;</span>
                 }
                 break;
         }
-<span class="fc" id="L305">        return isPlayersTurn;</span>
+<span class="fc" id="L306">        return isPlayersTurn;</span>
     }
+
     /**
      * Method to help switching player.
      *
      * @param currentFigure user object.
-     *
      * @return return point.
      */
 
     @Bean
     public static int playerChanger(int currentFigure) {
-<span class="fc" id="L317">        figure = currentFigure;</span>
+<span class="fc" id="L318">        figure = currentFigure;</span>
 
-<span class="pc bpc" id="L319" title="1 of 2 branches missed.">        if (figure == 1) {</span>
-<span class="nc" id="L320">            figure = 2;</span>
+<span class="pc bpc" id="L320" title="1 of 2 branches missed.">        if (figure == 1) {</span>
+<span class="nc" id="L321">            figure = 2;</span>
         } else {
-<span class="fc" id="L322">            figure = 1;</span>
+<span class="fc" id="L323">            figure = 1;</span>
         }
-<span class="fc" id="L324">        return figure;</span>
+<span class="fc" id="L325">        return figure;</span>
     }
+
     /**
      * Method to check movements before executed for validate movements.
      *
      * @param currentI Current position of X axis.
-     *
      * @param currentJ Current position of Y axis.
-     *
-     * @param nextI Move player On X axis.
-     *
-     * @param nextJ Move Player On Y axis.
-     *
-     * @param sFigure Move selected figure.
-     *
+     * @param nextI    Move player On X axis.
+     * @param nextJ    Move Player On Y axis.
+     * @param sFigure  Move selected figure.
      * @return return point.
      */
 
     @Bean
     public static boolean moveValidator(int currentI, int currentJ, int nextI, int nextJ, int sFigure) {
-<span class="fc" id="L344">        int iFrom = currentI;</span>
-<span class="fc" id="L345">        int jFrom = currentJ;</span>
-<span class="fc" id="L346">        int iTo = nextI;</span>
-<span class="fc" id="L347">        int jTo = nextJ;</span>
-<span class="fc" id="L348">        figure = sFigure;</span>
+<span class="fc" id="L341">        int iFrom = currentI;</span>
+<span class="fc" id="L342">        int jFrom = currentJ;</span>
+<span class="fc" id="L343">        int iTo = nextI;</span>
+<span class="fc" id="L344">        int jTo = nextJ;</span>
+<span class="fc" id="L345">        figure = sFigure;</span>
 
-<span class="fc" id="L350">        boolean isMoveValid = false;</span>
+<span class="fc" id="L347">        boolean isMoveValid = false;</span>
 
-<span class="pc bpc" id="L352" title="2 of 3 branches missed.">        switch (figure) {</span>
+<span class="pc bpc" id="L349" title="2 of 3 branches missed.">        switch (figure) {</span>
             case 1:
-<span class="nc bnc" id="L354" title="All 2 branches missed.">                if (gameBoard[iFrom][jFrom] == fHound) {</span>
-<span class="nc bnc" id="L355" title="All 2 branches missed.">                    if (gameBoard[iTo][jTo] != fHound) {</span>
-<span class="nc" id="L356">                        isMoveValid = true;</span>
+<span class="nc bnc" id="L351" title="All 2 branches missed.">                if (gameBoard[iFrom][jFrom] == fHound) {</span>
+<span class="nc bnc" id="L352" title="All 2 branches missed.">                    if (gameBoard[iTo][jTo] != fHound) {</span>
+<span class="nc" id="L353">                        isMoveValid = true;</span>
                     }
                 }
                 break;
             case 2:
-<span class="nc bnc" id="L361" title="All 2 branches missed.">                if (gameBoard[iFrom][jFrom] == fFox) {</span>
-<span class="nc bnc" id="L362" title="All 2 branches missed.">                    if (gameBoard[iTo][jTo] != fFox) {</span>
-<span class="nc" id="L363">                        isMoveValid = true;</span>
+<span class="nc bnc" id="L358" title="All 2 branches missed.">                if (gameBoard[iFrom][jFrom] == fFox) {</span>
+<span class="nc bnc" id="L359" title="All 2 branches missed.">                    if (gameBoard[iTo][jTo] != fFox) {</span>
+<span class="nc" id="L360">                        isMoveValid = true;</span>
                     }
                 }
                 break;
         }
-<span class="fc" id="L368">        return isMoveValid;</span>
+<span class="fc" id="L365">        return isMoveValid;</span>
     }
 
     /**
@@ -374,107 +371,104 @@ public class Gui extends JFrame {
 
     @Bean
     public static boolean positionChanger(int currentI, int currentJ, int nextI, int nextJ, int sFigure) {
-<span class="fc" id="L377">        boolean isMoveValid = false;</span>
-<span class="fc" id="L378">        int iFrom = currentI;</span>
-<span class="fc" id="L379">        int jFrom = currentJ;</span>
-<span class="fc" id="L380">        int iTo = nextI;</span>
-<span class="fc" id="L381">        int jTo = nextJ;</span>
-<span class="fc" id="L382">        figure = sFigure;</span>
+<span class="fc" id="L374">        boolean isMoveValid = false;</span>
+<span class="fc" id="L375">        int iFrom = currentI;</span>
+<span class="fc" id="L376">        int jFrom = currentJ;</span>
+<span class="fc" id="L377">        int iTo = nextI;</span>
+<span class="fc" id="L378">        int jTo = nextJ;</span>
+<span class="fc" id="L379">        figure = sFigure;</span>
 
-<span class="pc bpc" id="L384" title="2 of 3 branches missed.">        switch (figure) {</span>
+<span class="pc bpc" id="L381" title="2 of 3 branches missed.">        switch (figure) {</span>
             case 1:
-<span class="nc bnc" id="L386" title="All 4 branches missed.">                if ((iFrom != iTo) &amp;&amp; (jFrom != jTo)) {</span>
-<span class="nc bnc" id="L387" title="All 4 branches missed.">                    if (((iFrom + 1) == iTo) || ((iFrom - 1) == iTo)) {</span>
-<span class="nc bnc" id="L388" title="All 4 branches missed.">                        if ((jFrom == (jTo + 1)) || (jFrom == (jTo - 1))) {</span>
-<span class="nc bnc" id="L389" title="All 2 branches missed.">                            if (gameBoard[iTo][jTo] == 0) {</span>
-<span class="nc" id="L390">                                gameBoard[iTo][jTo] = fHound;</span>
-<span class="nc" id="L391">                                gameBoard[iFrom][jFrom] = 0;</span>
-<span class="nc" id="L392">                                jButtons[iFrom][jFrom].setIcon(null);</span>
-<span class="nc" id="L393">                                jButtons[iTo][jTo].setIcon(new ImageIcon(</span>
+<span class="nc bnc" id="L383" title="All 4 branches missed.">                if ((iFrom != iTo) &amp;&amp; (jFrom != jTo)) {</span>
+<span class="nc bnc" id="L384" title="All 4 branches missed.">                    if (((iFrom + 1) == iTo) || ((iFrom - 1) == iTo)) {</span>
+<span class="nc bnc" id="L385" title="All 4 branches missed.">                        if ((jFrom == (jTo + 1)) || (jFrom == (jTo - 1))) {</span>
+<span class="nc bnc" id="L386" title="All 2 branches missed.">                            if (gameBoard[iTo][jTo] == 0) {</span>
+<span class="nc" id="L387">                                gameBoard[iTo][jTo] = fHound;</span>
+<span class="nc" id="L388">                                gameBoard[iFrom][jFrom] = 0;</span>
+<span class="nc" id="L389">                                jButtons[iFrom][jFrom].setIcon(null);</span>
+<span class="nc" id="L390">                                jButtons[iTo][jTo].setIcon(new ImageIcon(</span>
                                         &quot;C:\\Users\\HOME BENCE\\Desktop\\assignment2\\src\\main\\resources\\img\\fox.png&quot;
                                 ));
-<span class="nc" id="L396">                                isMoveValid = true;</span>
+<span class="nc" id="L393">                                isMoveValid = true;</span>
                             }
                         }
                     }
                 }
                 break;
             case 2:
-<span class="nc bnc" id="L403" title="All 4 branches missed.">                if ((iFrom != iTo) &amp;&amp; (jFrom != jTo)) {</span>
-<span class="nc bnc" id="L404" title="All 2 branches missed.">                    if ((iFrom + 1) == iTo) {</span>
-<span class="nc bnc" id="L405" title="All 4 branches missed.">                        if (((jFrom + 1) == jTo) || ((jFrom - 1) == jTo)) {</span>
-<span class="nc bnc" id="L406" title="All 2 branches missed.">                            if (gameBoard[iTo][jTo] == 0) {</span>
-<span class="nc" id="L407">                                gameBoard[iTo][jTo] = fFox;</span>
-<span class="nc" id="L408">                                gameBoard[iFrom][jFrom] = 0;</span>
-<span class="nc" id="L409">                                jButtons[iFrom][jFrom].setIcon(null);</span>
-<span class="nc" id="L410">                                jButtons[iTo][jTo].setIcon(new ImageIcon(</span>
+<span class="nc bnc" id="L400" title="All 4 branches missed.">                if ((iFrom != iTo) &amp;&amp; (jFrom != jTo)) {</span>
+<span class="nc bnc" id="L401" title="All 2 branches missed.">                    if ((iFrom + 1) == iTo) {</span>
+<span class="nc bnc" id="L402" title="All 4 branches missed.">                        if (((jFrom + 1) == jTo) || ((jFrom - 1) == jTo)) {</span>
+<span class="nc bnc" id="L403" title="All 2 branches missed.">                            if (gameBoard[iTo][jTo] == 0) {</span>
+<span class="nc" id="L404">                                gameBoard[iTo][jTo] = fFox;</span>
+<span class="nc" id="L405">                                gameBoard[iFrom][jFrom] = 0;</span>
+<span class="nc" id="L406">                                jButtons[iFrom][jFrom].setIcon(null);</span>
+<span class="nc" id="L407">                                jButtons[iTo][jTo].setIcon(new ImageIcon(</span>
                                         &quot;C:\\Users\\HOME BENCE\\Desktop\\assignment2\\src\\main\\resources\\img\\hound.png&quot;
                                 ));
-<span class="nc" id="L413">                                isMoveValid = true;</span>
+<span class="nc" id="L410">                                isMoveValid = true;</span>
                             }
                         }
                     }
                 }
                 break;
         }
-<span class="fc" id="L420">        return isMoveValid;</span>
+<span class="fc" id="L417">        return isMoveValid;</span>
     }
 
     /**
      * Check positions if fox or hounds has won the game yet.
      *
      * @param currentI currentI Move player On X axis.
-     *
      * @param currentJ Move Player On Y axis.
-     *
-     * @param _user Move selected player.
-     *
+     * @param _user    Move selected player.
      * @return return point.
      */
     @Bean
     public static boolean winValidator(int currentI, int currentJ, int _user) {
-<span class="fc" id="L436">        boolean isGameFinished = false;</span>
-<span class="fc" id="L437">        int iFrom = currentI;</span>
-<span class="fc" id="L438">        int jFrom = currentJ;</span>
-<span class="fc" id="L439">        int i = 0;</span>
-<span class="fc" id="L440">        int j = 0;</span>
-<span class="fc" id="L441">        figure = _user;</span>
+<span class="fc" id="L430">        boolean isGameFinished = false;</span>
+<span class="fc" id="L431">        int iFrom = currentI;</span>
+<span class="fc" id="L432">        int jFrom = currentJ;</span>
+<span class="fc" id="L433">        int i = 0;</span>
+<span class="fc" id="L434">        int j = 0;</span>
+<span class="fc" id="L435">        figure = _user;</span>
 
-<span class="pc bpc" id="L443" title="2 of 3 branches missed.">        switch (figure) {</span>
+<span class="pc bpc" id="L437" title="2 of 3 branches missed.">        switch (figure) {</span>
             case 1:
-<span class="nc bnc" id="L445" title="All 2 branches missed.">                if (iFrom == 0) {</span>
-<span class="nc" id="L446">                    isGameFinished = true;</span>
+<span class="nc bnc" id="L439" title="All 2 branches missed.">                if (iFrom == 0) {</span>
+<span class="nc" id="L440">                    isGameFinished = true;</span>
                 }
                 break;
             case 2:
 
-<span class="nc bnc" id="L451" title="All 2 branches missed.">                for (int x = 0; x &lt; 8; x++) {</span>
-<span class="nc bnc" id="L452" title="All 2 branches missed.">                    for (int y = 0; y &lt; 8; y++) {</span>
-<span class="nc bnc" id="L453" title="All 2 branches missed.">                        if (gameBoard[x][y] == 1) {</span>
-<span class="nc" id="L454">                            i = x;</span>
-<span class="nc" id="L455">                            j = y;</span>
+<span class="nc bnc" id="L445" title="All 2 branches missed.">                for (int x = 0; x &lt; 8; x++) {</span>
+<span class="nc bnc" id="L446" title="All 2 branches missed.">                    for (int y = 0; y &lt; 8; y++) {</span>
+<span class="nc bnc" id="L447" title="All 2 branches missed.">                        if (gameBoard[x][y] == 1) {</span>
+<span class="nc" id="L448">                            i = x;</span>
+<span class="nc" id="L449">                            j = y;</span>
                         }
                     }
                 }
-<span class="nc bnc" id="L459" title="All 2 branches missed.">                if (j == 0) {</span>
-<span class="nc bnc" id="L460" title="All 4 branches missed.">                    if ((gameBoard[i - 1][j + 1] == fFox) &amp;&amp; (gameBoard[i + 1][j + 1] == fFox)) {</span>
-<span class="nc" id="L461">                        isGameFinished = true;</span>
+<span class="nc bnc" id="L453" title="All 2 branches missed.">                if (j == 0) {</span>
+<span class="nc bnc" id="L454" title="All 4 branches missed.">                    if ((gameBoard[i - 1][j + 1] == fFox) &amp;&amp; (gameBoard[i + 1][j + 1] == fFox)) {</span>
+<span class="nc" id="L455">                        isGameFinished = true;</span>
                     }
-<span class="nc bnc" id="L463" title="All 2 branches missed.">                } else if (j == 7) {</span>
-<span class="nc bnc" id="L464" title="All 4 branches missed.">                    if ((gameBoard[i + 1][j - 1] == fFox) &amp;&amp; (gameBoard[i - 1][j - 1] == fFox)) {</span>
-<span class="nc" id="L465">                        isGameFinished = true;</span>
+<span class="nc bnc" id="L457" title="All 2 branches missed.">                } else if (j == 7) {</span>
+<span class="nc bnc" id="L458" title="All 4 branches missed.">                    if ((gameBoard[i + 1][j - 1] == fFox) &amp;&amp; (gameBoard[i - 1][j - 1] == fFox)) {</span>
+<span class="nc" id="L459">                        isGameFinished = true;</span>
                     }
                 } else {
-<span class="nc bnc" id="L468" title="All 4 branches missed.">                    if ((gameBoard[i + 1][j + 1] == fFox) &amp;&amp; (gameBoard[i - 1][j + 1] == fFox)) {</span>
-<span class="nc bnc" id="L469" title="All 4 branches missed.">                        if ((gameBoard[i - 1][j - 1] == fFox) &amp;&amp; (gameBoard[i + 1][j - 1] == fFox)) {</span>
-<span class="nc" id="L470">                            isGameFinished = true;</span>
+<span class="nc bnc" id="L462" title="All 4 branches missed.">                    if ((gameBoard[i + 1][j + 1] == fFox) &amp;&amp; (gameBoard[i - 1][j + 1] == fFox)) {</span>
+<span class="nc bnc" id="L463" title="All 4 branches missed.">                        if ((gameBoard[i - 1][j - 1] == fFox) &amp;&amp; (gameBoard[i + 1][j - 1] == fFox)) {</span>
+<span class="nc" id="L464">                            isGameFinished = true;</span>
                         }
                     }
                 }
                 break;
         }
 
-<span class="fc" id="L477">        return isGameFinished;</span>
+<span class="fc" id="L471">        return isGameFinished;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

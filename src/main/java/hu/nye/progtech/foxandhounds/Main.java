@@ -2,7 +2,12 @@ package hu.nye.progtech.foxandhounds;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 
@@ -179,18 +184,6 @@ public class Main implements ActionListener {
                 connection.close();
                 break;
             case "deleteuser":
-                //  TODO : ID MUST BE EDITABLE
-
-                /*
-                Connection connection2 = DriverManager.getConnection("jdbc:h2:tcp://localhost/./highScores", "sa", "password");
-                Statement statement2 = connection2.createStatement();
-                int i = statement2.executeUpdate("DELETE FROM HIGHSCORES WHERE ID = 1");
-                System.out.println("Affected rows " + i);
-
-                statement2.close();
-                connection2.close();
-
-                 */
 
                 System.out.println("Please write in ID of row you want to delete from database:([ID])");
                 Connection connection2 = DriverManager.getConnection("jdbc:h2:tcp://localhost/./highScores", "sa", "password");
@@ -199,7 +192,7 @@ public class Main implements ActionListener {
 
                 String deleteQuery = "DELETE FROM HIGHSCORES WHERE ID = ?";
                 PreparedStatement preparedStatement = connection2.prepareStatement(deleteQuery);
-                preparedStatement.setInt(1,id);
+                preparedStatement.setInt(1, id);
 
                 int i = preparedStatement.executeUpdate();
                 System.out.println(i);
@@ -218,17 +211,10 @@ public class Main implements ActionListener {
                 String name = scanner.nextLine();
                 int point = scanner.nextInt();
 
-                // String insertQuery = "INSERT INTO HIGHSCORES (NAME, POINT) VALUES ('Teszt User', 32)";
-                /*String insertQuery = "INSERT INTO HIGHSCORES (NAME, POINT) VALUES ('" + name + "'," + point + ")";
-                statement = connection3.createStatement();
-                int i1 = statement.executeUpdate(insertQuery);
-                System.out.println(i1);
-                 */
-
                 String insertQuery = "INSERT INTO HIGHSCORES (NAME, POINT) VALUES (?, ?)";
                 PreparedStatement preparedStatement2 = connection3.prepareStatement(insertQuery);
-                preparedStatement2.setString(1,name);
-                preparedStatement2.setInt(2,point);
+                preparedStatement2.setString(1, name);
+                preparedStatement2.setInt(2, point);
 
                 int i1 = preparedStatement2.executeUpdate();
                 System.out.println(i1);

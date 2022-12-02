@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * Class to manage GUI actions.
- * */
+ */
 
 @Configuration
 public class Settings implements ActionListener {
@@ -31,19 +31,18 @@ public class Settings implements ActionListener {
     private JButton rjMReset;
 
 
-
     @Autowired
-<span class="fc" id="L36">    public Settings(JMenuItem _rules, JMenuItem _highScores, JMenuItem _saveGame, JMenuItem _loadGame, JMenuItem _exit, JButton _reset) {</span>
-<span class="fc" id="L37">        jMRules = _rules;</span>
-<span class="fc" id="L38">        jMHighScores = _highScores;</span>
-<span class="fc" id="L39">        jMSave = _saveGame;</span>
-<span class="fc" id="L40">        jMLoad = _loadGame;</span>
-<span class="fc" id="L41">        jMExit = _exit;</span>
-<span class="fc" id="L42">        rjMReset = _reset;</span>
+<span class="fc" id="L35">    public Settings(JMenuItem _rules, JMenuItem _highScores, JMenuItem _saveGame, JMenuItem _loadGame, JMenuItem _exit, JButton _reset) {</span>
+<span class="fc" id="L36">        jMRules = _rules;</span>
+<span class="fc" id="L37">        jMHighScores = _highScores;</span>
+<span class="fc" id="L38">        jMSave = _saveGame;</span>
+<span class="fc" id="L39">        jMLoad = _loadGame;</span>
+<span class="fc" id="L40">        jMExit = _exit;</span>
+<span class="fc" id="L41">        rjMReset = _reset;</span>
 
-<span class="fc" id="L44">    }</span>
+<span class="fc" id="L43">    }</span>
 
-<span class="fc" id="L46">    @Autowired</span>
+<span class="fc" id="L45">    @Autowired</span>
     String rules_Msg = (
             &quot;Fox and Hounds ~ gameRules&quot; + &quot;\n&quot; + &quot;\n&quot; + &quot;This version (also called \&quot;Wolf and Sheep\&quot;, &quot; +
                     &quot;\&quot;Hounds and Hare\&quot;, or \&quot;Devil and Tailors\&quot;) is played on an 8×8 chess/checkerboard.&quot; + &quot;\n&quot; +
@@ -66,13 +65,13 @@ public class Settings implements ActionListener {
                     &quot;\n&quot; + &quot; and to pass his turn once during the game, as demonstrated in Winning Ways.&quot;
     );
 
-<span class="fc" id="L69">    @Autowired</span>
+<span class="fc" id="L68">    @Autowired</span>
     String high_Scores = (&quot;High Scores - TODO&quot;);
 
-<span class="fc" id="L72">    @Autowired</span>
+<span class="fc" id="L71">    @Autowired</span>
     String save_Game = (&quot;**SAVING GAME** - TODO&quot;);
 
-<span class="fc" id="L75">    @Autowired</span>
+<span class="fc" id="L74">    @Autowired</span>
     String load_Game = (&quot;**LOADING GAME** - TODO&quot;);
 
 
@@ -84,28 +83,28 @@ public class Settings implements ActionListener {
 
     @Bean
     public void actionPerformed(ActionEvent e) {
-<span class="fc" id="L87">        String actionString = e.getActionCommand();</span>
-<span class="fc bfc" id="L88" title="All 2 branches covered.">        if (actionString.equalsIgnoreCase(&quot;Game-Description&quot;)) {</span>
-<span class="fc" id="L89">            JFrame dialogframe = new JFrame(&quot;Fox And Hounds Rules&quot;);</span>
-<span class="fc" id="L90">            JOptionPane.showMessageDialog(dialogframe, rules_Msg);</span>
-<span class="fc bfc" id="L91" title="All 2 branches covered.">        } else if (actionString.equalsIgnoreCase(&quot;High-Scores&quot;)) {</span>
-<span class="fc" id="L92">            JFrame dialogframe = new JFrame(&quot;Fox And Hounds High Scores&quot;);</span>
-<span class="fc" id="L93">            JOptionPane.showMessageDialog(dialogframe, high_Scores);</span>
-<span class="fc bfc" id="L94" title="All 2 branches covered.">        } else if (actionString.equalsIgnoreCase(&quot;Save-Game&quot;)) {</span>
-<span class="fc" id="L95">            JFrame dialogframe = new JFrame(&quot;Fox And Hounds Save Game&quot;);</span>
-<span class="fc" id="L96">            JOptionPane.showMessageDialog(dialogframe, save_Game);</span>
-<span class="fc bfc" id="L97" title="All 2 branches covered.">        } else if (actionString.equalsIgnoreCase(&quot;Load-Game&quot;)) {</span>
-<span class="fc" id="L98">            JFrame dialogframe = new JFrame(&quot;Fox And Hounds Load Game&quot;);</span>
-<span class="fc" id="L99">            JOptionPane.showMessageDialog(dialogframe, load_Game);</span>
-<span class="pc bpc" id="L100" title="1 of 2 branches missed.">        } else if (actionString.equalsIgnoreCase(&quot;Exit-Game&quot;)) {</span>
-<span class="nc" id="L101">            System.exit(0);</span>
-<span class="pc bpc" id="L102" title="1 of 2 branches missed.">        } else if (actionString.equalsIgnoreCase(&quot;Reset-Game&quot;)) {</span>
-<span class="nc" id="L103">            Gui.boardStarter();</span>
-<span class="nc" id="L104">            Gui.imgPlacer();</span>
+<span class="fc" id="L86">        String actionString = e.getActionCommand();</span>
+<span class="fc bfc" id="L87" title="All 2 branches covered.">        if (actionString.equalsIgnoreCase(&quot;Game-Description&quot;)) {</span>
+<span class="fc" id="L88">            JFrame dialogframe = new JFrame(&quot;Fox And Hounds Rules&quot;);</span>
+<span class="fc" id="L89">            JOptionPane.showMessageDialog(dialogframe, rules_Msg);</span>
+<span class="fc bfc" id="L90" title="All 2 branches covered.">        } else if (actionString.equalsIgnoreCase(&quot;High-Scores&quot;)) {</span>
+<span class="fc" id="L91">            JFrame dialogframe = new JFrame(&quot;Fox And Hounds High Scores&quot;);</span>
+<span class="fc" id="L92">            JOptionPane.showMessageDialog(dialogframe, high_Scores);</span>
+<span class="fc bfc" id="L93" title="All 2 branches covered.">        } else if (actionString.equalsIgnoreCase(&quot;Save-Game&quot;)) {</span>
+<span class="fc" id="L94">            JFrame dialogframe = new JFrame(&quot;Fox And Hounds Save Game&quot;);</span>
+<span class="fc" id="L95">            JOptionPane.showMessageDialog(dialogframe, save_Game);</span>
+<span class="fc bfc" id="L96" title="All 2 branches covered.">        } else if (actionString.equalsIgnoreCase(&quot;Load-Game&quot;)) {</span>
+<span class="fc" id="L97">            JFrame dialogframe = new JFrame(&quot;Fox And Hounds Load Game&quot;);</span>
+<span class="fc" id="L98">            JOptionPane.showMessageDialog(dialogframe, load_Game);</span>
+<span class="pc bpc" id="L99" title="1 of 2 branches missed.">        } else if (actionString.equalsIgnoreCase(&quot;Exit-Game&quot;)) {</span>
+<span class="nc" id="L100">            System.exit(0);</span>
+<span class="pc bpc" id="L101" title="1 of 2 branches missed.">        } else if (actionString.equalsIgnoreCase(&quot;Reset-Game&quot;)) {</span>
+<span class="nc" id="L102">            Gui.boardStarter();</span>
+<span class="nc" id="L103">            Gui.imgPlacer();</span>
         }
 
 
-<span class="fc" id="L108">    }</span>
+<span class="fc" id="L107">    }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

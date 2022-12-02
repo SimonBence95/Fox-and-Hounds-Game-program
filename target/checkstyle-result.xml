@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <checkstyle version="9.0.1">
-<file name="C:\Users\HOME BENCE\Desktop\assignment\untitled\src\main\java\hu\nye\progtech\foxandhounds\Gui.java">
+<file name="C:\Users\HOME BENCE\Desktop\assignment\foxAndHounds\src\main\java\hu\nye\progtech\foxandhounds\Gui.java">
 </file>
-<file name="C:\Users\HOME BENCE\Desktop\assignment\untitled\src\main\java\hu\nye\progtech\foxandhounds\HighScores.java">
+<file name="C:\Users\HOME BENCE\Desktop\assignment\foxAndHounds\src\main\java\hu\nye\progtech\foxandhounds\HighScores.java">
 </file>
-<file name="C:\Users\HOME BENCE\Desktop\assignment\untitled\src\main\java\hu\nye\progtech\foxandhounds\Main.java">
+<file name="C:\Users\HOME BENCE\Desktop\assignment\foxAndHounds\src\main\java\hu\nye\progtech\foxandhounds\Main.java">
 </file>
-<file name="C:\Users\HOME BENCE\Desktop\assignment\untitled\src\main\java\hu\nye\progtech\foxandhounds\Settings.java">
+<file name="C:\Users\HOME BENCE\Desktop\assignment\foxAndHounds\src\main\java\hu\nye\progtech\foxandhounds\Settings.java">
 </file>
 </checkstyle>
