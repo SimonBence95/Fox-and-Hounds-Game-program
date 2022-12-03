@@ -86,7 +86,7 @@ public class TestFoxAndHoundsGame {
     @Test
     public void moreTest() {
 
-        Assertions.assertTrue(true,"test");
+
 
     }
     TODO Add additional test to project files.
